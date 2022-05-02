@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,13 +35,22 @@
                     Login
                     </div>
                     <div class="card-body">
-                    <form>
+                    <form action="valida_login.php" method="post">
                         <div class="form-group">
-                        <input type="email" class="form-control" placeholder="E-mail">
+                        <input name="email" type="email" class="form-control" placeholder="E-mail">
                         </div>
                         <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input name="senha" type="password" class="form-control" placeholder="Senha">
                         </div>
+                        
+                        <?php if(isset($_GET['login']) && $_GET['login'] == 'erro'){?>
+                            
+                            <div class="text-danger">
+                                Usuario ou senha invalido(s)
+                            </div>
+
+                        <?php } ?><!--obs1-->
+
                         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                     </form>
                     </div>
@@ -50,3 +60,5 @@
     </div>
 </body>
 </html>
+
+<!--obs1 - Para inicio de conversa, tag curta nao funcionou neste bloco kkkkk. Com a tag curta a div ficou aparecendo de qualquer jeito, entao tive que usar a tag php full. Este exemplo deixa bem claro que posso usar html dentro de tags php com funcoes em aberto. 

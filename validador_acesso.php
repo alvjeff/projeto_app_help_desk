@@ -6,7 +6,7 @@
             //echo $_SESSION['autenticado'];
         }
         
-        echo $_SESSION['autenticado'];
+       // echo $_SESSION['autenticado'];
 
        /**com isso vamos diminuir a redundancia de codigo, algo mais ou menos como ocorre com as css */
 ?>

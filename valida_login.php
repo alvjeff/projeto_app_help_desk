@@ -32,7 +32,8 @@
     //usuarios do sistema
     $usuario_app = array(
         array('email' => 'adm@teste.com.br', 'senha' => '123456'),
-        array('email' => 'user@teste.com.br', 'senha' => 'abcd')
+        array('email' => 'user@teste.com.br', 'senha' => 'abcd'),
+        array('email' => 'jeff@excelente.com', 'senha' => '123')
     ); /*obs1 */
 
     // echo '<pre>';
@@ -59,6 +60,7 @@
     if($usuario_autenticacao){
         echo 'usuario autenticado';
         $_SESSION['autenticado'] = 'SIM';
+        header('Location: home.php');//obs6
     }else {
         //echo 'erro na autenticacao do usuario';
         $_SESSION['autenticado'] = 'NAO';
@@ -73,6 +75,8 @@
     /**obs4 - os valores armazenados aqui serao acessados por outros scripts. Deve ser colocado no topo */
 
     /**obs5 - Nao sei se levantei esta observacao. Se nao, farei novamente. A superglobal $_SESSION eh um array com indices associativos, ou seja, seus indices nao sao necessariamente numeros, podem ser strings. */
+
+    /**obs6 - codigo colocado depois, visando forcar o redirecionamento para home.php */
 ?>
     
 </body>

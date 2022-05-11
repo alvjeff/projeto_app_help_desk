@@ -1,3 +1,17 @@
+<?php
+        // session_start();
+
+        // if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM'){
+        //     header('Location: index.php?login=erro2');
+        //     //echo $_SESSION['autenticado'];
+        // }
+        
+        // echo $_SESSION['autenticado'];
+
+        require_once "validador_acesso.php";
+       /**foi optado pelo require_once ao inves do include, pq o include permitiria visualilzar o resto do script caso desse erro e como nesse caso nao queremos acesso nenhum em caso de erro, usamos o requere_once.  */
+?>
+    
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,7 +31,7 @@
     </style>
 </head>
 <body>
-    
+  
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">

@@ -51,6 +51,14 @@
 
                         <?php } ?><!--obs1-->
 
+                        <?php if(isset($_GET['login']) && $_GET['login'] == 'erro2'){?>
+                            
+                            <div class="text-danger">
+                                Faça o login antes de acessar as paginas protegidas
+                            </div>
+
+                        <?php } ?><!--obs1-->
+
                         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                     </form>
                     </div>
@@ -61,4 +69,4 @@
 </body>
 </html>
 
-<!--obs1 - Para inicio de conversa, tag curta nao funcionou neste bloco kkkkk. Com a tag curta a div ficou aparecendo de qualquer jeito, entao tive que usar a tag php full. Este exemplo deixa bem claro que posso usar html dentro de tags php com funcoes em aberto. 
+<!--obs1 - Para inicio de conversa, tag curta nao funcionou neste bloco kkkkk. Com a tag curta a div ficou aparecendo de qualquer jeito, entao tive que usar a tag php full. Este exemplo deixa bem claro que posso usar html dentro de tags php com funcoes em aberto. Este 'isset($_GET['login']' verifica se esse get está setado. Isto ocorre apos a tentativa de entrar na pagina 'valida_login'). Bom perceber que essa div com o aviso de erro aparece no local correto pq foi planejada com o php no local exato. 

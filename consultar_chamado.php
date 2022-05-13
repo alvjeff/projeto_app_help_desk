@@ -7,7 +7,33 @@
 
       require_once "validador_acesso.php";
 
+      $chamados = array();//obs2
+
+
+      //abrir o arquivo para leitura
+      $arquivo = fopen('arquivo.txt', 'r');
+
+      //enquanto houverem linhas a serem recuperadas.
+      while(!feof($arquivo)){  //obs1
+        $registro = fgets($arquivo);  //obs3
+        $chamados[] = $registro;
+      }
+
+
+      //fechar arquivo aberto
+      fclose($arquivo);
        
+
+      // echo '<pre>';
+      // print_r($chamados);
+      // echo '</pre>';
+
+
+      /**obs1 - esse feof() funciona como um ponteiro que sai de linha em linha do arquivo ate encontrar o final. Retorna true quando acha o final do arquivo */
+
+      /**obs2 - array criada para armazenar os chamados feitos, as linhas do 'arquivo.txt' */
+
+      /**obs3 - vou me aprofundar melhor, mas ate onde entendi, fgets() faz leitura linha a linha, ele recupera, ou aponta, faz um get, linha a linha do $arquivo. Na linha imediatamente abaixo sera colocado no array $chamados[]. Cada linha dentro deste laco de repeticao sera acresentada a um indice do array. */
 ?>
 
 <!DOCTYPE html>
@@ -52,24 +78,36 @@
             </div>
             
             <div class="card-body">
+
+              <!--codigo acresentado depois - obs1-->
+              <?php
+                foreach($chamados as $chamado){
+              ?>
+                <?php
+                  $chamado_dados = explode('#', $chamado);//<!--obs2-->
+
+                  if(count($chamado_dados) < 3){
+                    continue; //<!--obs3 -->
+                  }
+                  // echo '<pre>';
+                  // print_r($chamado_dados);
+                  // echo '</pre>';
+
+                ?>
+                
+                
+                <div class="card mb-3 bg-light">
+                  <div class="card-body">
+                    <h5 class="card-title"><?= $chamado_dados[0] ?></h5> <!--obs1 -->
+
+                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
+                    <p class="card-text"><?= $chamado_dados[2] ?></p>
+
+                  </div>
+                </div>
+
+              <?php } ?>
               
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
-
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
 
               <div class="row mt-5">
                 <div class="col-6">
@@ -84,3 +122,11 @@
     
 </body>
 </html>
+
+<!--obs1 - atentar que o php esta dentro do codigo html, entender bem como manipular isso. Ressalto novamente, entenda isso DIREITO!-->
+
+<!--obs2 - esse explode() eh funcao nativa do php para lidar com array, coisa que ja vi la atras. Comecamos com um arquivo que explodiu na array $chamados, que cada indice contem uma linha do arquivo. Agora explode cada linha na array $chamado_dados, em que cada indice contem uma parte da linha que foi justamente separada pela # que usamos anteriormente.-->
+
+<!--DESAFIO: por um campo a mais no formulario, tipo, nome de quem solicitou o servico-->
+
+<!-- este bloco de if eu nao entendi, rever o video e tentar entender depois, basicamente entender esse 'continue'-->

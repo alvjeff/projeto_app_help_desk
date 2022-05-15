@@ -9,7 +9,13 @@
         // echo $_SESSION['autenticado'];
 
         require_once "validador_acesso.php";
+        
+        //print_r($_SESSION);
+
+
        /**foi optado pelo require_once ao inves do include, pq o include permitiria visualilzar o resto do script caso desse erro e como nesse caso nao queremos acesso nenhum em caso de erro, usamos o requere_once.  */
+
+
 ?>
     
 <!DOCTYPE html>

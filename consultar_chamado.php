@@ -7,6 +7,7 @@
 
       require_once "validador_acesso.php";
 
+      //print_r($_SESSION);
       $chamados = array();//obs2
 
 
@@ -86,6 +87,14 @@
                 <?php
                   $chamado_dados = explode('#', $chamado);//<!--obs2-->
 
+                  if($_SESSION['perfil_id'] == 2){
+                  //so vamos exibir o chamado se ele foi criado pelo usuario
+                  //assim os adm vao poder ver todos os chamados
+                    if($_SESSION['id'] != $chamado_dados[0]){//<obs4>
+                      continue;  
+                    }
+                  }
+
                   if(count($chamado_dados) < 3){
                     continue; //<!--obs3 -->
                   }
@@ -98,10 +107,10 @@
                 
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
-                    <h5 class="card-title"><?= $chamado_dados[0] ?></h5> <!--obs1 -->
+                    <h5 class="card-title"><?= $chamado_dados[1] ?></h5> <!--obs1 -->
 
-                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
-                    <p class="card-text"><?= $chamado_dados[2] ?></p>
+                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
+                    <p class="card-text"><?= $chamado_dados[3] ?></p>
 
                   </div>
                 </div>
@@ -129,4 +138,6 @@
 
 <!--DESAFIO: por um campo a mais no formulario, tipo, nome de quem solicitou o servico-->
 
-<!-- este bloco de if eu nao entendi, rever o video e tentar entender depois, basicamente entender esse 'continue'-->
+<!--obs3 - este bloco de if eu nao entendi, rever o video e tentar entender depois, basicamente entender esse 'continue'. Dias depois: Agora acho que entendi-->
+
+<!--obs4 - se o id da sessao nao bater com o id do chamado, se na hora de consultar, o chamado nao foi aberto por aquel id, ele dá um continue, parte para a proxima iteracao do foreach, acho que entendi o continue agora.

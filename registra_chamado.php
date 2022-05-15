@@ -1,7 +1,9 @@
 <?php
-    echo '<pre>';
-    print_r($_POST);//obs3
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($_POST);//obs3
+    // echo '</pre>';
+
+    session_start(); //obs9
 
     //utilizando o replace, substituicao de caracteres em array//obs4
     $titulo = str_replace('#', '-', $_POST['titulo']);
@@ -10,7 +12,7 @@
 
 
     //inplode('#', $_POST) - DESAFIO: refatorar este codigo usando inplode
-    $texto = $titulo . '#' .$categoria . '#'. $descricao . PHP_EOL;   //obs8 
+    $texto = $_SESSION['id'] . '#' . $titulo . '#' .$categoria . '#'. $descricao . PHP_EOL;   //obs8 
     echo $texto;
 
 
@@ -43,5 +45,7 @@
     /**obs7 - tive que liberar o acesso de leitura e gravacao nas propriedades da pasta do projeto para ser criado o arquivo.txt */
 
     /**obs8 - esse PHP_EOL - PHP END OF LINE, indica que apos esse texto, sera pulada uma linha. isso eh importante, devido a ter que gravar mais texto, mais chamados neste arquivo, a separacao de linhas vai diferenciar entre um chamado e outro, senao os chamados ficariam concatenados um do lado do outro na mesma linha, nao sendo possivel distingui-los. */
+
+    /**obs9 - sessao sera iniciada para se recuperar o 'id' do usuario e ser incorporado aqui para que se possa fazer controle de perfis de usuario. Esse id foi colocado depois ao codigo com essa finalidade.*/
 
 ?>

@@ -29,13 +29,16 @@
     //variavel que verifica se a atenticacao foi realizada
     $usuario_autenticacao = false;
     $usuario_id = null;
+    $usuario_perfil_id = null;//obs8
+
+    $perfis = array(1 => 'administrativo', 2 => 'usuario');//obs7
 
     //usuarios do sistema
     $usuario_app = array(
-        array('id' => 1, 'email' => 'adm@teste.com.br', 'senha' => '123456'),
-        array('id' => 2, 'email' => 'user@teste.com.br', 'senha' => 'abcd'),
-        array('id' => 3, 'email' => 'jeff@excelente.com', 'senha' => '123'),
-        array('id' => 4, 'email' => 'deliam@teste.com', 'senha' => '123')
+        array('id' => 1, 'email' => 'adm@teste.com.br', 'senha' => '123', 'perfil_id' => 1),
+        array('id' => 2, 'email' => 'user@teste.com.br', 'senha' => '123', 'perfil_id' => 2),
+        array('id' => 3, 'email' => 'jeff@excelente.com', 'senha' => '123', 'perfil_id' => 1),
+        array('id' => 4, 'email' => 'deliam@teste.com', 'senha' => '123', 'perfil_id' => 2)
     ); /*obs1 */
 
     // echo '<pre>';
@@ -54,6 +57,8 @@
 
         if($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']){
             $usuario_autenticacao = true;
+            $usuario_id = $user['id'];
+            $usuario_perfil_id = $user['perfil_id'];
         }//obs2
 
         
@@ -62,6 +67,8 @@
     if($usuario_autenticacao){
         echo 'usuario autenticado';
         $_SESSION['autenticado'] = 'SIM';
+        $_SESSION['id'] = $usuario_id;
+        $_SESSION['perfil_id'] = $usuario_perfil_id;
         header('Location: home.php');//obs6
     }else {
         //echo 'erro na autenticacao do usuario';
@@ -79,6 +86,10 @@
     /**obs5 - Nao sei se levantei esta observacao. Se nao, farei novamente. A superglobal $_SESSION eh um array com indices associativos, ou seja, seus indices nao sao necessariamente numeros, podem ser strings. */
 
     /**obs6 - codigo colocado depois, visando forcar o redirecionamento para home.php */
+
+    /**obs7 - variavel criada depois para controle de perfis */
+
+    /**obs8 - variavel que estara relacionada ao array $perfis e ao indice ao indice 'perfil_id' que esta dentro do array que esta dentro do array '$usuario_app */
 ?>
     
 </body>

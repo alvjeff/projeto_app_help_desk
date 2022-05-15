@@ -28,12 +28,14 @@
 
     //variavel que verifica se a atenticacao foi realizada
     $usuario_autenticacao = false;
+    $usuario_id = null;
 
     //usuarios do sistema
     $usuario_app = array(
-        array('email' => 'adm@teste.com.br', 'senha' => '123456'),
-        array('email' => 'user@teste.com.br', 'senha' => 'abcd'),
-        array('email' => 'jeff@excelente.com', 'senha' => '123')
+        array('id' => 1, 'email' => 'adm@teste.com.br', 'senha' => '123456'),
+        array('id' => 2, 'email' => 'user@teste.com.br', 'senha' => 'abcd'),
+        array('id' => 3, 'email' => 'jeff@excelente.com', 'senha' => '123'),
+        array('id' => 4, 'email' => 'deliam@teste.com', 'senha' => '123')
     ); /*obs1 */
 
     // echo '<pre>';

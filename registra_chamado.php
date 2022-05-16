@@ -17,7 +17,7 @@
 
 
     //vamos abrir um arquivo de texto, para ler, escrever e fechar, qualquer duvida consultar documentacao
-    $arquivo = fopen('arquivo.txt', 'a');//obs2
+    $arquivo = fopen('../../projeto_app_help_desk/arquivo.txt', 'a');//obs2
 
 
     

@@ -12,7 +12,7 @@
 
 
       //abrir o arquivo para leitura
-      $arquivo = fopen('arquivo.txt', 'r');
+      $arquivo = fopen('../../projeto_app_help_desk/arquivo.txt', 'r');
 
       //enquanto houverem linhas a serem recuperadas.
       while(!feof($arquivo)){  //obs1
@@ -20,7 +20,7 @@
         $chamados[] = $registro;
       }
 
-
+      
       //fechar arquivo aberto
       fclose($arquivo);
        
